@@ -1,0 +1,20 @@
+# application.yml
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/task_manager
+    username: postgres
+    password: 96R26Yk#
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # Cria/Atualiza o esquema
+      # spring.jpa.properties.hibernate.hbm2ddl.auto foi substituído por ddl-auto
+    show-sql: true # Loga as queries SQL
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format-sql: true # Formata o SQL para melhor leitura
+  
+server:
+  port: 8080

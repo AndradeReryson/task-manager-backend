@@ -1,0 +1,90 @@
+TESTE DE CRIAÇÃO DE PROJETO USANDO DTO
+POST http://localhost:8080/api/projects
+{
+    "name": "Expansão da Fábrica C",
+    "description": "Projeto de ampliação da ala de produção, Fase 1.",
+    "startDate": "2026-03-01",
+    "endDate": "2026-12-31",
+    "status": "PLANEJAMENTO",
+    "budget": 1250000.00,
+    "responsibleTeamId": null 
+}
+
+TESTE DE CRIAÇÃO DE TAREFA
+POST http://localhost:8080/api/tasks
+{
+    "title": "Aprovação do Desenho Estrutural",
+    "description": "Enviar o pacote 01 de desenhos para o cliente.",
+    "dueDate": "2025-11-20",
+    "priority": "ALTA",
+    "projectId": 1,
+    "responsibleEmployeeId": null
+}
+
+TESTE DE CRIAÇÃO DE COLABORADOR
+POST http://localhost:8080/api/employees
+{
+    "name": "João da Silva",
+    "email": "joao.silva@empresa.com",
+    "role": "Engenheiro de Estruturas",
+    "admissionDate": "2024-08-15",
+    "isActive": true
+}
+
+POPULANDO MAIS 2 COLABORADORES NO BANCO
+POST http://localhost:8080/api/employees
+{
+    "name": "Maria Oliveira",
+    "email": "maria.oliveira@empresa.com",
+    "role": "Gerente de Projetos",
+    "admissionDate": "2023-01-20",
+    "isActive": true
+}
+
+POST http://localhost:8080/api/employees
+{
+    "name": "Pedro Santos",
+    "email": "pedro.santos@empresa.com",
+    "role": "Coordenador de QA",
+    "admissionDate": "2024-05-01",
+    "isActive": true
+}
+
+CRIAÇÃO DE NOVO DOCUMENTO (PRECISA DO PROJETO E 3 COLABORADORES POPULADOS)
+POST http://localhost:8080/api/documents
+{
+    "documentDetails": {
+        "uniqueCode": "SEDA-EST-0001-A", 
+        "title": "Desenho de Fundação do Lote 1",
+        "category": "Desenho", 
+        "discipline": "Estruturas", 
+        "tags": "fundacao, estrutura, desenho",
+        "projectId": 1 
+    },
+    "versionDetails": {
+        "versionNumber": "A",
+        "filename": "SEDA-EST-0001-A.pdf",
+        "filePath": "/storage/docs/SEDA-EST-0001/A.pdf",
+        "createdByEmployeeId": 1
+    },
+    "approverIds": [
+        2, 
+        3, 
+        1
+    ]
+}
+
+TESTE DE APROVAÇÃO DE DOCUMENTO
+PUT http://localhost:8080/api/documents/approval/1
+{
+    "approverEmployeeId": 2,
+    "comments": "Revisão inicial do escopo OK.",
+    "isApproved": true 
+}
+
+TESTE DE CRIAÇÃO DE UM NOVO TIME
+POST http://localhost:8080/api/teams
+{
+    "name": "Estruturas",
+    "colorBadge": "#0077B6"
+}
