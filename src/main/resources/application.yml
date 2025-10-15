@@ -3,8 +3,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/task_manager
-    username: "SEU USUARIO AQUI"
-    password: "SUA SENHA AQUI"
+    username: SEU USUARIO AQUI
+    password: SUA SENHA AQUI
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
